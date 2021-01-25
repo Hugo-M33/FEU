@@ -8,7 +8,7 @@ const MailBodyInput = ({bodyInput, setBodyInput}) => {
         setBodyInput(e.target.value);
     }
     return (
-        <StyledTextInput value={bodyInput} onChange={userInputHandler} placeholder="Corps du mail"/>
+        <StyledTextInput value={bodyInput} onChange={e => userInputHandler(e)} placeholder="Corps du mail"/>
     );
 }
 

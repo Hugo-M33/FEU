@@ -7,7 +7,7 @@ const MailTitleInput = ({setTitleInput, titleInput}) => {
         setTitleInput(e.target.value);
     }
     return (
-        <StyledTextInput value={titleInput} onChange={userInputHandler} placeholder="Titre du mail"/>
+        <StyledTextInput value={titleInput} onChange={e => userInputHandler(e)} placeholder="Titre du mail"/>
     );
 }
 
