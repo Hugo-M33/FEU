@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import "./App.css";
 import ButtonList from "./components/ButtonList.js";
 import MailTitleInput from "./components/MailTitleInput.js";
 import MailBodyInput from "./components/MailBodyInput.js";
 import SendButton from "./components/SendButton.js";
+import Etiquette from "./components/Etiquette.js";
 import firebase from "firebase";
 import DBconfig from "./firebase.js";
 
@@ -30,6 +32,13 @@ const reducer = (state, action) => {
 
   }
 };
+
+const StyledDestinataires = styled.div`
+display: flex;
+flex-flow: row wrap;
+justify-content: center;
+
+`
 
 function App() {
   const [titleInput, setTitleInput] = useState("");
@@ -89,20 +98,21 @@ function App() {
     for (let n = 0; n<destinataires.length; n++) {
       recipientsString += destinataires[n].email + ",";
     }
-    window.open(`https://webmel.u-bordeaux.fr/h/search?action=compose&to=${recipientsString}&subject=${titleInput}&body=${bodyInput}`);
+    window.open(`https://webmel.u-bordeaux.fr/h/search?action=compose&to=${recipientsString.substring(0, recipientsString.length-1)}&subject=${titleInput}&body=${bodyInput}`);
   }
 
 
   return (
     <div className="App">
       <GlobalStyle />
+
+      <StyledDestinataires>{destinataires.map((receiver) => (
+      <Etiquette id={receiver.id} mail={receiver.email} dispatch={dispatch}/>
+      ))}</StyledDestinataires>
       <MailTitleInput
         titleInput={titleInput}
         setTitleInput={setTitleInput}
       ></MailTitleInput>
-      {destinataires.map((receiver) => (
-        <span>{receiver.id}</span>
-      ))}
       <MailBodyInput
         bodyInput={bodyInput}
         setBodyInput={setBodyInput}
@@ -118,11 +128,15 @@ function App() {
 }
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 1vw;
+  }
   body {
     margin: 0;
-    background: linear-gradient(110deg, #EAD2AC, #4281A4);
-    height: 100vh;
+    background: linear-gradient(110deg, #5151C6, #888BF4);
     font-family: sans-serif;
+    font-size: 1em;
+    
   }
 
   .App {

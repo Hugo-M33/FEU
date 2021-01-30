@@ -19,7 +19,7 @@ import styled from 'styled-components';
         align-items: center;
         justify-content: center;
     
-        font-size: 2.5rem;
+        font-size: 2rem;
         transition: all 0.4s ease-out;
         &:hover {
             background: 'green';

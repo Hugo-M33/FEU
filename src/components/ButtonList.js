@@ -9,7 +9,7 @@ const StyledGroup = styled(Group)`
 &:before {
         content: '${props => props.id}';
         position: absolute;
-        font-size: 4.5rem;
+        font-size: 4.5em;
         left: 0;
         top: -4.5rem;
     }
@@ -19,7 +19,7 @@ const ButtonList = ({ lists, setRecipients, key, toggleRecipient, dispatch, clas
   return (
     <StyledButtonList>
       {lists.map(groupe => {
-        return <StyledGroup className={className} dispatch={dispatch} id={Object.keys(groupe).toString()} groupe={groupe} toggleRecipient={toggleRecipient}></StyledGroup>
+        return <StyledGroup className={className} dispatch={dispatch} id={Object.keys(groupe).toString()} key={Object.keys(groupe).toString()} groupe={groupe} toggleRecipient={toggleRecipient}></StyledGroup>
       })}
     </StyledButtonList>
   );

@@ -16,6 +16,10 @@ display: flex;
 flex-wrap: wrap;
 `
 
+const StyledButton = styled(Button)`
+background-color: '${props => props.selected ? 'blue' : 'white'}';
+`
+
 const IconContainer = styled.div`
 position: absolute;
 right: 10px;
@@ -31,7 +35,7 @@ const Group = ({ id, groupe, toggleRecipient, dispatch, className }) => {
         <StyledGroup onClick={() => toggle ? '' : setToggle(true)} className={className}>
             {toggle ? <IconContainer onClick={() => setToggle(false)}><ImCross  size={32}/></IconContainer> : ''}
             {toggle ? groupe[id].map(element => {
-                return <Button dispatch={dispatch} classe={id} id={element.id} toggleRecipient={toggleRecipient} mail={element.mail} selected={element.selected}></Button>
+                return <Button dispatch={dispatch} classe={id} id={element.id} key={element.id} toggleRecipient={toggleRecipient} mail={element.mail} selected={element.selected}></Button>
             }) : ''}
         </StyledGroup>
     )
