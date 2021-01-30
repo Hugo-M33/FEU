@@ -133,7 +133,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
-    background: background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
     font-family: sans-serif;
     font-size: 1em;
     
